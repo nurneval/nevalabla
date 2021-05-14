@@ -1,10 +1,12 @@
+from base.views import index
+from django.http.request import QueryDict
 from django.shortcuts import render,redirect
 from .forms import UserRegisterForm, IsEmri ,TestForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login ,logout
 from django.http import HttpResponseRedirect, HttpResponse ,JsonResponse
 from django.urls import reverse
-from django.db.models import Max
+from django.db.models import Max, query
 from django.contrib.auth.models import User
 from .models import Emir , Test, Bildirim, Uretim, Valf
 from .models import Valf_montaj,Valf_test,Valf_govde,Valf_fm200,Valf_havuz,Valf_final_montaj
@@ -20,6 +22,8 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from base64 import b64decode
 from base.signals import ping_signal
+from django.utils import six 
+import itertools
 # Create your views here.
 
 
@@ -104,4 +108,45 @@ def is_emri_valfleri(request):
     print("veriiiiiii",list(temp)) 
     return JsonResponse(list(temp),safe=False)
 
+data_list = []
+@csrf_exempt
+def valf_test_kayıt(request):
+    print("içerde-----< kayıt")
+    try:
+        
+        counter = 0
+        for key,value in  dict(request.POST.dict()).items():
+            data_list.append(value)
+            counter += 1
+            if counter % 5 == 0:
+                value_list=list_function(counter-5,counter)
+                cleandata = control_save_function(value_list)
+                if(cleandata):
+                    save_function(cleandata,request.user.id)     
+    except Exception as err:
+        print(err)
 
+
+
+def list_function(first,second):
+
+    #print(list(itertools.islice(data_list, first,second)))
+    return list(itertools.islice(data_list, first,second))
+
+def control_save_function(list):
+    if list[0]:
+        return list
+
+#def control_duplication_test()
+
+def save_function(cleanlist,user_id):
+    print(cleanlist[2])
+    valf_test =Valf_test(acma=cleanlist[2],kapama=cleanlist[3],sebep=cleanlist[4],uygun=cleanlist[1],test_tarihi=timezone.now(),test_personel_id=user_id)
+    valf_test.save()
+    print(valf_test)
+    valf = Valf.objects.get(id=cleanlist[0])
+    valf.valf_test_id = valf_test.id
+    valf.save()
+    #print(cleanlist)
+    #personel_id= Valf_montaj.objects.filter(id=cleanlist[0]).first().montaj_personel_id
+    #obj = list(Valf_test.objects.filter(personel_id=personel_id))

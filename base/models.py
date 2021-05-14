@@ -114,6 +114,34 @@ class Uretim(models.Model):
         return str(self.vsn)
 
 
+class Valf_govde(models.Model):
+ 
+
+    tork=models.PositiveIntegerField(null=True)
+    tup_seri_no=models.PositiveIntegerField(null=True)
+    sodyum_miktari=models.PositiveIntegerField(null=True)
+    uygunluk=models.CharField(max_length=30,null=True,blank=True)
+    sebep=models.CharField(max_length=30,null=True,blank=True)
+    govde_personel=models.ForeignKey(User,related_name='govde_personel', on_delete=models.DO_NOTHING) 
+    govde_tarihi = models.DateTimeField( blank=True, null=True)
+    
+    govde_kurlenme_personel=models.ForeignKey(User,related_name='govde_kurlenme_personel',null=True,on_delete=models.DO_NOTHING) 
+    govde_kurlenme_parti_no = models.PositiveIntegerField(null=True)
+    govde_kurlenme_baslangic_tarihi = models.DateTimeField( blank=True, null=True)
+    govde_kurlenme_bitis_tarihi = models.DateTimeField( blank=True, null=True)
+
+    
+
+
+  
+
+class Valf_test(models.Model):
+    acma=models.PositiveIntegerField(null=True)
+    kapama=models.PositiveIntegerField(null=True)
+    uygun=models.BooleanField(default=False)
+    sebep=models.CharField(max_length=30,null=True,blank=True)
+    test_personel=models.ForeignKey(User,related_name='test_personel', on_delete=models.DO_NOTHING) 
+    test_tarihi = models.DateTimeField( blank=True, null=True)
 
 
 class Valf_montaj(models.Model):
@@ -134,6 +162,9 @@ class Valf_montaj(models.Model):
 class Valf(models.Model):
     is_emri = models.ForeignKey(Emir,on_delete=models.DO_NOTHING) 
     valf_montaj = models.ForeignKey(Valf_montaj,on_delete=models.DO_NOTHING)
+    valf_test = models.ForeignKey(Valf_test,on_delete=models.DO_NOTHING,null=True)
+    valf_govde = models.ForeignKey(Valf_govde,on_delete=models.DO_NOTHING,null=True)
+
  
 
 
@@ -144,58 +175,12 @@ class Valf(models.Model):
 
 
 
-# class Valf_test_yeni(models.Model):
-    
-#      
-
-#     acma=models.PositiveIntegerField(null=True)
-#     kapama=models.PositiveIntegerField(null=True)
-#     uygunluk=models.CharField(max_length=30,null=True,blank=True)
-#     sebep=models.CharField(max_length=30,null=True,blank=True)
-
-
-# class Valf(models.Model):
-#     is_emri = models.ForeignKey(Emir,on_delete=models.DO_NOTHING)
-#     alt_nipel_no = models.PositiveIntegerField(null=True)
-#     parti_no = models.PositiveIntegerField(null=True)
-#     bakir_membran_no = models.PositiveIntegerField(null=True)
-#     ust_nipel_no = models.PositiveIntegerField(null=True)
-#     manometre_no = models.PositiveIntegerField(null=True)
-#     basincanahtari_no = models.PositiveIntegerField(null=True)
-#     durum=models.CharField(max_length=30,null=True,blank=True)
 
 
 
-# class Valf_montaj(models.Model):
-#     valf=models.ForeignKey(Valf,on_delete=models.DO_NOTHING)
-#     personel=models.ForeignKey(User,on_delete=models.DO_NOTHING)
-#     kayit_tarihi=models.DateTimeField( blank=True, null=True)
-    
-#     kurlenme_bitis=models.DateTimeField( blank=True, null=True)
-
-
-class Valf_test(models.Model):
-    valf=models.ForeignKey(Valf,on_delete=models.DO_NOTHING)
-    personel=models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    kayit_tarihi=models.DateTimeField( blank=True, null=True)
-    
-    acma=models.PositiveIntegerField(null=True)
-    kapama=models.PositiveIntegerField(null=True)
-    uygunluk=models.CharField(max_length=30,null=True,blank=True)
-    sebep=models.CharField(max_length=30,null=True,blank=True)
  
 
-class Valf_govde(models.Model):
-    valf=models.ForeignKey(Valf,on_delete=models.DO_NOTHING)
-    personel=models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    kayit_tarihi=models.DateTimeField( blank=True, null=True)
-    
-    kurlenme_bitis=models.DateTimeField( blank=True, null=True)
-    tork=models.PositiveIntegerField(null=True)
-    tup_seri_no=models.PositiveIntegerField(null=True)
-    sodyum_miktari=models.PositiveIntegerField(null=True)
-    uygunluk=models.CharField(max_length=30,null=True,blank=True)
-    sebep=models.CharField(max_length=30,null=True,blank=True)
+
 
 class Valf_fm200(models.Model):
     valf=models.ForeignKey(Valf,on_delete=models.DO_NOTHING)

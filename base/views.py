@@ -19,7 +19,7 @@ from weasyprint import HTML
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from base64 import b64decode
-from base.signals import ping_signal
+
 # Create your views here.
 
 #mac = platform.machine()[:3] # eğer device ras pi ise 'arm' döner
@@ -266,7 +266,7 @@ def uretimkontrol(request):
 
                             valf_montaj = Valf_montaj(montaj_personel_id= personel_id, alt_nipel_no=alt_nipel_no,bakir_membran_no=bakir_membran_no,ust_nipel_no=ust_nipel_no,manometre_no=manometre_no,basincanahtari_no=basincanahtari_no,montaj_tarihi=kayit_tarihi,kurlenme_bitis_tarihi=kurlenme_bitis)
                             valf_montaj.save() 
-                            ping_signal.send(sender="berker", PING=True)
+                           
 
                             valf = Valf(is_emri=emir,valf_montaj=valf_montaj)
                             valf.save()
@@ -277,39 +277,31 @@ def uretimkontrol(request):
 
                         
                 elif request.POST.dict()['tur'] == 'valftest':
-                        veris = json.loads(request.POST.dict()['veri'])
-                        for veri in veris:
-                                '''neval
-                                v = Valf.objects.get(vsn=veri[0] ) 
-                                is_emri = v.is_emri
-                                t = Uretim.objects.get(vsn = veri[0])
-                                t.tur='valftest'
-                                t.acma = veri[1]
-                                t.kapatma = veri[2]
-                                t.sebep = veri[3]
-                                t.uygunluk = veri[4]
-                                t.personel = request.user.get_full_name()
-                                #t.test_kurlenme_zamani=timezone.now()+timezone.timedelta(minutes=10)
-                                #t = Uretim(tur='valftest',vsn = veri[0] ,is_emri=is_emri,  acma = veri[1], kapatma = veri[2],sebep = veri[3],uygunluk = veri[4]
-                                # , personel = request.user.get_full_name(),test_kurlenme_zamani=timezone.now()+timezone.timedelta(minutes=10))
-                                t.save()
-                                '''
+                        try:
 
-                                valf_seri_no=veri[0]
-                                valf = Valf.objects.get(id=valf_seri_no ) 
-                                valf.durum='valf_test'
-                                valf.save()
+                            valf_seri_no = json.loads(request.POST.dict()['valf_seri_no'])
+                            uygun = json.loads(request.POST.dict()['uygun'])
+                           
 
-                                personel_id=request.user.id
-                                kayit_tarihi=timezone.now()
-                                acma = veri[1]
-                                kapama = veri[2]
-                                sebep = veri[3]
-                                uygunluk = veri[4]
-                                if (uygunluk=='on'): 
-                                    sebep=None
-                                valf_test= Valf_test(valf=valf, personel_id=personel_id,kayit_tarihi=kayit_tarihi, acma=acma,kapama=kapama,uygunluk=uygunluk,sebep=sebep)
-                                valf_test.save()
+                            valf = Valf.objects.get(id=valf_seri_no ) 
+
+
+                            personel_id=User.objects.get(id=request.user.id)
+                            test_tarihi=timezone.now()
+                            
+
+                            acma = str(uygun)
+                            kapama = str(uygun)
+                            sebep = str(uygun)
+                            if (uygun==True): 
+                                sebep=None
+                            valf_test= Valf_test(  test_personel=personel_id,test_tarihi=test_tarihi,uygun=uygun)
+
+                            valf_test.save()
+                            valf.valf_test=valf_test
+                            valf.save()
+                        except Exception as err:
+                            print(err)
                                  
                                 
                 elif request.POST.dict()['tur'] == 'valfgovde':
@@ -1003,8 +995,24 @@ def kurlenmeKontrol(request):
                     r = 'NO'
             except:
                 r = 'NO'
+        elif (tur=='valf_test'):
+            print("içerdeyim-----> Valf Test")
+            try:
+                valf_montaj_id = Valf.objects.filter(id=vsn).first().valf_montaj_id
+                print(valf_montaj_id)
+                tarih =  Valf_montaj.objects.filter(id=valf_montaj_id).first().kurlenme_bitis_tarihi
+                print(type(timezone.now()),timezone.now())
+                print(type(tarih),tarih)
+                if(tarih<timezone.now()):
+                    print("büyüktür")
+                    r='OK'
+                else:
+                    print("küçük")
+                    r='NO'
+            except Exception as err:
             
-            print('r',r)
+                print('r',err)
+                r='NO'
 
         return HttpResponse(r)
 

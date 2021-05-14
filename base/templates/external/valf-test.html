@@ -56,38 +56,94 @@
 <button type="submit" id="vt_btn_baglan" class="btn btn-primary mb-2">Bağlan</button>
 
 <div class="row">
-<form class="col-md-10" onsubmit = "event.preventDefault();" class="valfTestForm">
-	<div id="addableField">
-	    <div class="form-row">
-	    	<div class="col-md-2 text-center" >Seri no</div>
-            <div class="col-md-2 text-center">Uygun</div>
-            <div class="col-md-2 text-center">Uygun değil</div>
-            <div class="col-md-2 text-center">Açma</div>
-	    	<div class="col-md-2 text-center">Kapatma</div>
-	    	<div class="col-md-2 text-center">Sebep</div>
-	        <div class="form-group col-md-2">
-	            <input type="text" class="form-control addInput" id="seri_no_field" onkeyup="addSubmit(event)" name="vsn">
-	        </div>
-	        <div class="form-group col-md-2 text-center">
-	            <input name="uygunluk1" id="uygunluk1" data-degil="true" type="radio" checked>
-	        </div>
-	        <div class="form-group col-md-2 text-center">
-	            <input name="uygunluk1" id="uygunlukdegil1" data-degil="" type="radio">
-	        </div>
+  <form class="col-md-12" >
+    <div id="addableField">
+        <div class="form-row">
+          <div class="col-md-2 text-center" >Seri no</div>
+          <div class="col-md-2 text-center">Uygun</div>
+          <div class="col-md-2 text-center">Uygun değil</div>
+          <div class="col-md-2 text-center">Açma</div>
+          <div class="col-md-2 text-center">Kapatma</div>
+          <div class="col-md-2 text-center">Sebep</div>
+          
+            
+            <div>
+              
+            </div>
+        </div>
+      </div>
+  
+  
+  </form>
+  <form class="col-md-12" onsubmit = "event.preventDefault();" id="TestForm" class="valfTestForm">
+  
+    
+    <div id="addableField">
+        <div class="form-row">
+        
+          
+            <div class="form-group col-md-2">
+                <input type="text" class="form-control addInput" id="valf_seri_no" onkeyup="addSubmitTest(event,this)" name="vsn">
+                <p class="invalid-feedback">
+                  <strong>Bu seri nolu valfin montaj kürlenmesi tamamlanmadı!</strong>
+                </p>
+            </div>
+            <div class="form-group col-md-2 text-center">
+                <input  name="durum1" id="testuygun1" value="True" type="radio" checked>
+            </div>
+            <div class="form-group col-md-2 text-center">
+                <input   id="testuygundegil1"  type="radio">
+            </div>
+            <div class="form-group col-md-2">
+                <input  name="Açma" type="text" class="form-control">
+             
+            </div>
+            <div class="form-group col-md-2">
+                <input  name="Kapama" type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-2 text-center">
+                <select name="sebep" class="form-control">
+                  <option>Alt-Üst Nipel arası Kaçak</option>
+                  <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
+                  <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
+                  <option>Basınç Anahtarı-Alt Nipel Arası Kaçak</option>
+                  <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
+                  <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
+                  <option>Manometre Alt Nipel Arası Kaçak</option>
+                  <option>Sibop Alt Nipel Arası Kaçak</option>
+                </select>
+            </div>
+            <div>
+              
+            </div>
+        </div>
+    </div>
+     
+    <div id="addableField">
+      <div class="form-row">
+      
+        
           <div class="form-group col-md-2">
-              <input type="text" class="form-control acma ">
-              <!-- 
-              <input type="text" class="form-control  acma">
-              -->
+              <input type="text" class="form-control addInput" id="valf_seri_no" onkeyup="addSubmitTest(event,this)" name="vsn">
+              <p class="invalid-feedback">
+                <strong>Bu seri nolu valfin montaj kürlenmesi tamamlanmadı!</strong>
+              </p>
+          </div>
+          <div class="form-group col-md-2 text-center">
+              <input name="durum2" id="testuygun2" value="True"  data-degil="true" type="radio" checked>
+          </div>
+          <div class="form-group col-md-2 text-center">
+              <input   id="testuygundegil2"  type="radio">
           </div>
           <div class="form-group col-md-2">
-              <input type="text" class="form-control kapatma">
-              <!-- 
-              <input type="text" class="form-control  kapatma">
-              -->
-          </div>
-	        <div class="form-group col-md-2 text-center">
-	            <select class="form-control">
+            <input  name="Açma" type="text" class="form-control">
+         
+        </div>
+        <div class="form-group col-md-2">
+            <input  name="Kapama" type="text" class="form-control">
+        </div>
+          <div   class="form-group col-md-2 text-center">
+              <select  name="sebep" class="form-control">
                 <option>Alt-Üst Nipel arası Kaçak</option>
                 <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
                 <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
@@ -95,33 +151,149 @@
                 <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
                 <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
                 <option>Manometre Alt Nipel Arası Kaçak</option>
-	            	<option>Sibop Alt Nipel Arası Kaçak</option>
-	            </select>
-	        </div>
-	    </div>
-    </div>
-
-    <ul class="gerisayim p-0 mt-4 col-md-12">
-	    <li class="minutestest">02</li>
-	    <li class="secondstest">00</li>
-	  </ul>
-</form>
-
-  <div class="col-md-2 row" style="justify-content: space-between;height: 210px;padding:0;padding-left: 10px;">
-    {% if grup == 'Mühendis' %}
-    <input type="text" name="" class="form-control col-md-12" placeholder="Basınç" id="testBasınci" value="72" style="height: 40px;">
-    {% else %}
-    <input type="text" name="" class="form-control col-md-12" placeholder="Basınç" id="testBasınci" value="72" disabled style="height: 40px;">
-    {% endif %}
-
-    <button type="button" class="btn btn-success col-md-12 mt-2" style="height: 40px;font-size: 15px;font-weight:700;" id="vt-start">BAŞLAT</button>
-    <button type="button" class="btn btn-success col-md-12 mt-2" style="height: 40px;font-size: 15px;font-weight:700;" id="vt-stop">BİTİR</button>
-    <button type="button" class="btn btn-danger col-md-12 mt-2" style="height: 40px;font-size: 15px;font-weight:700;padding:0;" id="vt-acil">ACİL BİTİR</button>
-    <div class="indicator-cont" style="margin:0;"><span class="indicator" id="valfTestIndicator">00</span><span class="birim">Bar</span></div>
+                <option>Sibop Alt Nipel Arası Kaçak</option>
+              </select>
+          </div>
+          <div>
+            
+          </div>
+      </div>
   </div>
+    
+  <div id="addableField">
+    <div class="form-row">
+    
+      
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control addInput" id="valf_seri_no" onkeyup="addSubmitTest(event,this)" name="vsn">
+            <p class="invalid-feedback">
+              <strong>Bu seri nolu valfin montaj kürlenmesi tamamlanmadı!</strong>
+            </p>
+        </div>
+        <div class="form-group col-md-2 text-center">
+            <input name="durum3" id="testuygun3" value="True"  data-degil="true" type="radio" checked>
+        </div>
+        <div class="form-group col-md-2 text-center">
+            <input  id="testuygundegil3"  type="radio">
+        </div>
+        <div class="form-group col-md-2">
+          <input  name="Açma" type="text" class="form-control">
+       
+      </div>
+      <div class="form-group col-md-2">
+          <input  name="Kapama" type="text" class="form-control">
+      </div>
+        <div  class="form-group col-md-2 text-center">
+            <select   name="sebep" class="form-control">
+              <option>Alt-Üst Nipel arası Kaçak</option>
+              <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
+              <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
+              <option>Basınç Anahtarı-Alt Nipel Arası Kaçak</option>
+              <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
+              <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
+              <option>Manometre Alt Nipel Arası Kaçak</option>
+              <option>Sibop Alt Nipel Arası Kaçak</option>
+            </select>
+        </div>
+        <div>
+          
+        </div>
+    </div>
+  </div>
+  
+  <div id="addableField">
+    <div class="form-row">
+    
+      
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control addInput" id="valf_seri_no" onkeyup="addSubmitTest(event,this)" name="vsn">
+            <p class="invalid-feedback">
+              <strong>Bu seri nolu valfin montaj kürlenmesi tamamlanmadı!</strong>
+            </p>
+        </div>
+        <div class="form-group col-md-2 text-center">
+            <input name="durum4" id="testuygun4" value="True"  data-degil="true" type="radio" checked>
+        </div>
+        <div class="form-group col-md-2 text-center">
+            <input  id="testuygundegil4"  type="radio">
+        </div>
+           <div class="form-group col-md-2">
+                <input  name="Açma" type="text" class="form-control"> 
+            </div>
+            <div class="form-group col-md-2">
+                <input  name="Kapama" type="text" class="form-control">
+            </div>
+        <div name="sebep" class="form-group col-md-2 text-center">
+            <select  name="sebep" class="form-control">
+              <option>Alt-Üst Nipel arası Kaçak</option>
+              <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
+              <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
+              <option>Basınç Anahtarı-Alt Nipel Arası Kaçak</option>
+              <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
+              <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
+              <option>Manometre Alt Nipel Arası Kaçak</option>
+              <option>Sibop Alt Nipel Arası Kaçak</option>
+            </select>
+        </div>
+        <div>
+          
+        </div>
+    </div>
+  </div>
+  
+  <div id="addableField">
+    <div class="form-row">
+    
+      
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control addInput" id="valf_seri_no" onkeyup="addSubmitTest(event,this)" name="vsn">
+            <p class="invalid-feedback">
+              <strong>Bu seri nolu valfin montaj kürlenmesi tamamlanmadı!</strong>
+            </p>
+        </div>
+        <div class="form-group col-md-2 text-center">
+            <input  name="durum5" id="testuygun5" value="True"  data-degil="true" type="radio" checked>
+        </div>
+        <div class="form-group col-md-2 text-center">
+            <input   id="testuygundegil5"  type="radio">
+        </div>
+        <div class="form-group col-md-2">
+          <input  name="Açma" type="text" class="form-control">
+       
+      </div>
+      <div class="form-group col-md-2">
+          <input  name="Kapama" type="text" class="form-control">
+      </div>
+        <div  name="sebep" class="form-group col-md-2 text-center">
+            <select   name="sebep" class="form-control">
+              <option>Alt-Üst Nipel arası Kaçak</option>
+              <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
+              <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
+              <option>Basınç Anahtarı-Alt Nipel Arası Kaçak</option>
+              <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
+              <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
+              <option>Manometre Alt Nipel Arası Kaçak</option>
+              <option>Sibop Alt Nipel Arası Kaçak</option>
+            </select>
+        </div>
+        <div>
+          
+        </div>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-4 mx-auto">
+    <input type="submit" class="btn btn-success btn-lg btn-block" id="TestFormBtn"  value="KAYDET" disabled/>
+   </div>
+  
+  </hr>
+  </form>
+
+ 
+
 </div>
-<hr>
-<div class="col-md-4 mx-auto"><button type="button" class="btn btn-success btn-lg btn-block" id="valfTestSubmit">KAYDET</button></div>
+
+
 
 <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 <script>
@@ -155,82 +327,73 @@
       }
    });
 
-   function addNewLine(a){
-             a++;
-             if(a<5){
-                addableField.insertAdjacentHTML('beforeend',
-                `<div class="form-row">
-                    <div class="form-group col-md-2">
-                        <input type="text" class="form-control" class="addInput" id="seri_no_field${a}"  onkeyup="addSubmit(event)" >
-                    </div>
-                    <div class="form-group col-md-2 text-center">
-                        <input name="uygunluk${a}" id="uygunluk${a}" data-degil="true" type="radio" checked>
-                    </div>
-                    <div class="form-group col-md-2 text-center">
-                        <input name="uygunluk${a}" id="uygunlukdegil${a}" data-degil="" type="radio" >
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input type="text" class="form-control acma">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input type="text" class="form-control kapatma">
-                    </div>
-                    <div class="form-group col-md-2 text-center">
-                        <select class="form-control" disabled>
-                          <option>Alt-Üst Nipel arası Kaçak</option>
-                          <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
-                          <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
-                          <option>Basınç Anahtarı-Alt Nipel Arası Kaçak</option>
-                          <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
-                          <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
-                          <option>Manometre Alt Nipel Arası Kaçak</option>
-                          <option>Sibop Alt Nipel Arası Kaçak</option>
-                        </select>
-                    </div>
-                </div>`);
-            $('input[type=radio][name^="uygunluk"').change(function(e){
-              this.parentElement.parentElement.lastElementChild.children[0].disabled = Boolean(e.target.dataset.degil);
-            })
-            addableField.lastElementChild.children[0].children[0].focus();
-            $(".sil").remove();
-            /*addableField.lastElementChild.insertAdjacentHTML('beforeend',`<div class="col-md-1"><button class="sil btn btn-danger text-center ml-2 btn-sm" onclick="sil(event)" title="Sil"><i class="fa fa-trash"></i></button></div>`);*/
-            }
-   }
+  //  function addNewLine(a){
+  //            a++;
+  //            if(a<5){
+  //               addableField.insertAdjacentHTML('beforeend',
+  //               `<div class="form-row">
+  //                   <div class="form-group col-md-2">
+  //                       <input type="text" class="form-control" class="addInput" id="seri_no_field${a}"  onkeyup="addSubmitTest(event)" >
+  //                   </div>
+  //                   <div class="form-group col-md-2 text-center">
+  //                       <input name="uygunluk${a}" id="uygunluk${a}" data-degil="true" type="radio" checked>
+  //                   </div>
+  //                   <div class="form-group col-md-2 text-center">
+  //                       <input name="uygunluk${a}" id="uygunlukdegil${a}" data-degil="" type="radio" >
+  //                   </div>
+  //                   <div class="form-group col-md-2">
+  //                       <input type="text" class="form-control acma">
+  //                   </div>
+  //                   <div class="form-group col-md-2">
+  //                       <input type="text" class="form-control kapatma">
+  //                   </div>
+  //                   <div class="form-group col-md-2 text-center">
+  //                       <select class="form-control" disabled>
+  //                         <option>Alt-Üst Nipel arası Kaçak</option>
+  //                         <option>Emniyet Ventili Gövde-Kapak Arası Kaçak</option>
+  //                         <option>Emniyet Ventili Gövde-Alt Nipel Arası Kaçak</option>
+  //                         <option>Basınç Anahtarı-Alt Nipel Arası Kaçak</option>
+  //                         <option>Baçınç Anahtarı Açma Değeri Hatalı</option>
+  //                         <option>Baçınç Anahtarı Kapama Değeri Hatalı</option>
+  //                         <option>Manometre Alt Nipel Arası Kaçak</option>
+  //                         <option>Sibop Alt Nipel Arası Kaçak</option>
+  //                       </select>
+  //                   </div>
+  //               </div>`);
+  //           $('input[type=radio][name^="uygunluk"').change(function(e){
+  //             this.parentElement.parentElement.lastElementChild.children[0].disabled = Boolean(e.target.dataset.degil);
+  //           })
+  //           addableField.lastElementChild.children[0].children[0].focus();
+  //           $(".sil").remove();
+  //           /*addableField.lastElementChild.insertAdjacentHTML('beforeend',`<div class="col-md-1"><button class="sil btn btn-danger text-center ml-2 btn-sm" onclick="sil(event)" title="Sil"><i class="fa fa-trash"></i></button></div>`);*/
+  //           }
+  //  }
 
-  function addSubmit(e){
-    console.log('entere basıldı',e.keyCode)
+  function addSubmitTest(e,el){
+    console.log('tuşa basıldı ',e.keyCode)
 
-		if (e.keyCode === 13 && e.target.value) {
+		if ( e.target.value) {
             new Promise(function(resolve,reject){
               let data = {
-              "tur" : 'montaj_kurlenme',
+              "tur" : 'valf_test',
               "veri" : e.target.value
               }
-              console.log('entere basıldı')
+              
             $.ajax({
                   type: "POST",
                   url: '/kurlenmeKontrol',
                   data : data,
                   success: function (x){
                     if(x == 'NO'){
-                      Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Kürlenme süresi dolmamış valf.Bekleyin!'
-                      })
-                      e.target.value = '';
-                      reject(1);
-                      return;
-                    }else if(x == 'OK'){
-                      resolve(x);
+                      el.parentElement.lastElementChild.style.display = "block";
+                      kontrol = "";
+                      document.getElementById('TestFormBtn').disabled = true;
                     }else{
-                      Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Bir hata oluştu.'
-                      })
-                      reject(1);
-                      return;
+
+                      kontrol = "OK";
+                      el.parentElement.lastElementChild.style.display = "none";
+                      document.getElementById('TestFormBtn').disabled = false;
+                     
                     }
                   },
                     error(err){
@@ -271,9 +434,9 @@
                         </select>
                     </div>
                 </div>`);
-            $('input[type=radio][name^="uygunluk"').change(function(e){
-              this.parentElement.parentElement.lastElementChild.children[0].disabled = Boolean(e.target.dataset.degil);
-            })
+            // $('input[type=radio][name^="uygunluk"').change(function(e){
+            //   this.parentElement.parentElement.lastElementChild.children[0].disabled = Boolean(e.target.dataset.degil);
+            // })
             addableField.lastElementChild.children[0].children[0].focus();
             $(".sil").remove();
             /*addableField.lastElementChild.insertAdjacentHTML('beforeend',`<div class="col-md-1"><button class="sil btn btn-danger text-center ml-2 btn-sm" onclick="sil(event)" title="Sil"><i class="fa fa-trash"></i></button></div>`);*/
@@ -294,12 +457,12 @@ function sil(ev){
   }
 }
 
-$('input[type=radio][name^="uygunluk"').change(function(e){
-              this.parentElement.parentElement.lastElementChild.children[0].disabled = Boolean(e.target.dataset.degil);
-              console.log(Boolean(e.target.dataset.degil))
-            })
+// $('input[type=radio][name^="uygunluk"').change(function(e){
+//               this.parentElement.parentElement.lastElementChild.children[0].disabled = Boolean(e.target.dataset.degil);
+//               console.log(Boolean(e.target.dataset.degil))
+//             })
 
-$('input[type=radio][name^="uygunluk"').prop("checked",true);
+// $('input[type=radio][name^="uygunluk"').prop("checked",true);
 </script>
 
 <script>
@@ -392,23 +555,23 @@ $('input[type=radio][name^="uygunluk"').prop("checked",true);
 
 <script type="text/javascript">
 
-  let vt_btn_Baglan = document.getElementById('vt_btn_baglan');
-  let vt_btn_Start = document.getElementById('vt-start');
-  let vt_btn_Stop = document.getElementById('vt-stop');
-  let vt_btn_AcilStop = document.getElementById('vt-acil');
-  let vt_testBasinci = document.getElementById('testBasınci');
-  let vt_pressValue = document.getElementById('valfTestIndicator');
-  let vt_btn_Kaydet = document.getElementById('valfTestSubmit');
-  var Timer_VT_getPress;
-  var timer = 0;
+  // let vt_btn_Baglan = document.getElementById('vt_btn_baglan');
+  // let vt_btn_Start = document.getElementById('vt-start');
+  // let vt_btn_Stop = document.getElementById('vt-stop');
+  // let vt_btn_AcilStop = document.getElementById('vt-acil');
+  // let vt_testBasinci = document.getElementById('testBasınci');
+  // let vt_pressValue = document.getElementById('valfTestIndicator');
+  // let vt_btn_Kaydet = document.getElementById('valfTestKaydet');
+  // var Timer_VT_getPress;
+  // var timer = 0;
 
-  vt_btn_Baglan.disabled = false;
-  vt_btn_Start.disabled = true;
-  vt_btn_Stop.disabled = true;
-  vt_btn_AcilStop.disabled = true;
-  vt_testBasinci.disabled = true;
-  vt_btn_Kaydet.disabled = true;
-  vt_btn_Kaydet.disabled = false;//neval
+  // vt_btn_Baglan.disabled = false;
+  // vt_btn_Start.disabled = true;
+  // vt_btn_Stop.disabled = true;
+  // vt_btn_AcilStop.disabled = true;
+  // vt_testBasinci.disabled = true;
+  // vt_btn_Kaydet.disabled = true;
+  // vt_btn_Kaydet.disabled = false;//neval
 
 
   //******************** ValfTest Bağlan ********************
@@ -491,202 +654,188 @@ $('input[type=radio][name^="uygunluk"').prop("checked",true);
   var state2 = true
   var state3 = true
 
-  document.getElementById('vt-start').addEventListener('click', function(e){
-      let desired = vt_testBasinci.value;
-      vt_btn_Start.disabled = true;
-      vt_testBasinci.disabled = true;
+  // document.getElementById('vt-start').addEventListener('click', function(e){
+  //     let desired = vt_testBasinci.value;
+  //     vt_btn_Start.disabled = true;
+  //     vt_testBasinci.disabled = true;
 
-      let inputs = document.querySelectorAll('#addableField .form-row');
-      console.log(desired);
-      console.log(inputs.length);
-      let veri = { "ValfTestSetPress": desired, "ValfCount": inputs.length };
+  //     let inputs = document.querySelectorAll('#addableField .form-row');
+  //     console.log(desired);
+  //     console.log(inputs.length);
+  //     let veri = { "ValfTestSetPress": desired, "ValfCount": inputs.length };
 
-      $.ajax({
-          type: "post",
-          url: 'http://localhost:5000/vt_start',
-          data: veri,
-          timeout: 10000,
-          success: function (x){
-              if(x == "success"){
-                  toastr["success"]("Test başladı");
+  //     $.ajax({
+  //         type: "post",
+  //         url: 'http://localhost:5000/vt_start',
+  //         data: veri,
+  //         timeout: 10000,
+  //         success: function (x){
+  //             if(x == "success"){
+  //                 toastr["success"]("Test başladı");
 
-                  state1 = true
-                  state2 = true
-                  state3 = true
-                  Timer_VT_testStatus = setInterval(Timer_VT_testStatusEventHandler, 1000);
-              }
-              else if(x == "fail"){
-                  toastr["error"]("Test başlama başarısız!");
-                  vt_btn_Start.disabled = false;
-              }
-          },
-          error: function(x){
-              toastr["error"]("Bağlantı, zaman aşımına uğradı!\nUygulamanın çalışır durumda olduğunundan emin olunuz.");
-              console.log(x);
-          }
-      });
-  });
+  //                 state1 = true
+  //                 state2 = true
+  //                 state3 = true
+  //                 Timer_VT_testStatus = setInterval(Timer_VT_testStatusEventHandler, 1000);
+  //             }
+  //             else if(x == "fail"){
+  //                 toastr["error"]("Test başlama başarısız!");
+  //                 vt_btn_Start.disabled = false;
+  //             }
+  //         },
+  //         error: function(x){
+  //             toastr["error"]("Bağlantı, zaman aşımına uğradı!\nUygulamanın çalışır durumda olduğunundan emin olunuz.");
+  //             console.log(x);
+  //         }
+  //     });
+  // });
   
   
-  function Timer_VT_testStatusEventHandler(){
-    $.ajax({
-        type: "post",
-        url: 'http://localhost:5000/vt_testStatus',
-        timeout: 2000,
-        success: function(x){
-            if(x['TestDurumu'] == true){
-                if((x['HazneDurumu'] == 'doldu') && (state1 == true)){
-                    toastr["info"]("Hazne doldu!");
-                    vt_btn_Stop.disabled = false;
-                    state1 = false;	//if'in içine bir kere girsin diye yapıldı.
-                }
-                else if((x['HazneDurumu'] == 'bosaliyor') && (state2 == true)){
-                    toastr["info"]("Boşaltma işlemi başladı.");
-                    state2 = false;	//if'in içine bir kere girsin diye yapıldı.
-                }
+  // function Timer_VT_testStatusEventHandler(){
+  //   $.ajax({
+  //       type: "post",
+  //       url: 'http://localhost:5000/vt_testStatus',
+  //       timeout: 2000,
+  //       success: function(x){
+  //           if(x['TestDurumu'] == true){
+  //               if((x['HazneDurumu'] == 'doldu') && (state1 == true)){
+  //                   toastr["info"]("Hazne doldu!");
+  //                   vt_btn_Stop.disabled = false;
+  //                   state1 = false;	//if'in içine bir kere girsin diye yapıldı.
+  //               }
+  //               else if((x['HazneDurumu'] == 'bosaliyor') && (state2 == true)){
+  //                   toastr["info"]("Boşaltma işlemi başladı.");
+  //                   state2 = false;	//if'in içine bir kere girsin diye yapıldı.
+  //               }
                 
-                let AcmaInputs = document.querySelectorAll('#addableField .acma');
-                let KapamaInputs = document.querySelectorAll('#addableField .kapatma');
-                for(let i = 0; i<AcmaInputs.length; i++){
-                    AcmaInputs[i].value = x['SwitchShort'][i];
-                    KapamaInputs[i].value = x['SwitchOpen'][i];
-                }             
-            }
-            else if((x['TestDurumu'] == false) && (state3 == true)){
-                toastr["info"]("Hazne boşaldı");
-                toastr["success"]("Test işlemi bitti!");
-                vt_btn_Start.disabled = false;
-                clearInterval(Timer_VT_testStatus);
-                state3 = false;	//if'in içine bir kere girsin diye yapıldı.(Not: Timer durdurulduğu için zaten girmicek)
-            }
-        },
-        error: function(x){
-            clearInterval(Timer_VT_testStatus);
-            console.log(x);
-        }
-    });
-  }
+  //               let AcmaInputs = document.querySelectorAll('#addableField .acma');
+  //               let KapamaInputs = document.querySelectorAll('#addableField .kapatma');
+  //               for(let i = 0; i<AcmaInputs.length; i++){
+  //                   AcmaInputs[i].value = x['SwitchShort'][i];
+  //                   KapamaInputs[i].value = x['SwitchOpen'][i];
+  //               }             
+  //           }
+  //           else if((x['TestDurumu'] == false) && (state3 == true)){
+  //               toastr["info"]("Hazne boşaldı");
+  //               toastr["success"]("Test işlemi bitti!");
+  //               vt_btn_Start.disabled = false;
+  //               clearInterval(Timer_VT_testStatus);
+  //               state3 = false;	//if'in içine bir kere girsin diye yapıldı.(Not: Timer durdurulduğu için zaten girmicek)
+  //           }
+  //       },
+  //       error: function(x){
+  //           clearInterval(Timer_VT_testStatus);
+  //           console.log(x);
+  //       }
+  //   });
+  // }
 
  
-  //******************** ValfTest Stop **********************
-  document.getElementById('vt-stop').addEventListener('click', function(e){
-    let el = e.target;
-    el.disabled = true;
+  // //******************** ValfTest Stop **********************
+  // document.getElementById('vt-stop').addEventListener('click', function(e){
+  //   let el = e.target;
+  //   el.disabled = true;
 
-    $.ajax({
-          type: "post",
-          url: 'http://localhost:5000/vt_stop',
-          timeout: 2000,
-          success: function (x){
-              if(x == "success"){
+  //   $.ajax({
+  //         type: "post",
+  //         url: 'http://localhost:5000/vt_stop',
+  //         timeout: 2000,
+  //         success: function (x){
+  //             if(x == "success"){
 
-              }
-              else if(x == "fail"){
-                  toastr["error"]("Boşaltma işlemi başarısız!");
-                  el.disabled = false;
-                  AcilStopState = true;
-              }
-          },
-          error: function(x){
-              toastr["error"]("Bağlantı, zaman aşımına uğradı!\nUygulamanın çalışır durumda olduğunundan emin olunuz.");
-              console.log(x);
-          }
-    });
-  });
+  //             }
+  //             else if(x == "fail"){
+  //                 toastr["error"]("Boşaltma işlemi başarısız!");
+  //                 el.disabled = false;
+  //                 AcilStopState = true;
+  //             }
+  //         },
+  //         error: function(x){
+  //             toastr["error"]("Bağlantı, zaman aşımına uğradı!\nUygulamanın çalışır durumda olduğunundan emin olunuz.");
+  //             console.log(x);
+  //         }
+  //   });
+  // });
 
   
-  //******************** ValfTest Acil Stop *****************
-  var Timer_VT_acilStop;
-  var AcilStopState = true;
+  // //******************** ValfTest Acil Stop *****************
+  // var Timer_VT_acilStop;
+  // var AcilStopState = true;
 
-  document.getElementById('vt-acil').addEventListener('click',(e)=>{
-    let el = e.target;
-    el.disabled = true;
+  // document.getElementById('vt-acil').addEventListener('click',(e)=>{
+  //   let el = e.target;
+  //   el.disabled = true;
 
-    $.ajax({
-        type: "post",
-        url: 'http://localhost:5000/vt_acilstop',
-        timeout: 2000,
-        success: function (x){
-            if(x == "success"){
-                vt_btn_Stop.disabled = true;
-                clearInterval(Timer_VT_testStatus);
-                Timer_VT_acilStop = setInterval(Timer_VT_acilStopEventHandler, 1000);
-            }
-            else if(x == "fail"){
-                toastr["error"]("Acil Bitirme işlemi başarısız!");
-                el.disabled = false;
-            }
-        },
-        error: function(x){
-            toastr["error"]("Bağlantı, zaman aşımına uğradı!\nUygulamanın çalışır durumda olduğunundan emin olunuz.");
-            console.log(x);
-        }
-    });
-  });
+  //   $.ajax({
+  //       type: "post",
+  //       url: 'http://localhost:5000/vt_acilstop',
+  //       timeout: 2000,
+  //       success: function (x){
+  //           if(x == "success"){
+  //               vt_btn_Stop.disabled = true;
+  //               clearInterval(Timer_VT_testStatus);
+  //               Timer_VT_acilStop = setInterval(Timer_VT_acilStopEventHandler, 1000);
+  //           }
+  //           else if(x == "fail"){
+  //               toastr["error"]("Acil Bitirme işlemi başarısız!");
+  //               el.disabled = false;
+  //           }
+  //       },
+  //       error: function(x){
+  //           toastr["error"]("Bağlantı, zaman aşımına uğradı!\nUygulamanın çalışır durumda olduğunundan emin olunuz.");
+  //           console.log(x);
+  //       }
+  //   });
+  // });
 
-  function Timer_VT_acilStopEventHandler(){
-    $.ajax({
-        type: "post",
-        url: 'http://localhost:5000/vt_testStatus',
-        timeout: 2000,
-        success: function(x){
-            if((x['HazneDurumu'] == 'bosaliyor') && (AcilStopState == true)){
-                AcilStopState = false;
-                toastr["info"]("Boşaltma işlemi başladı.");
-                console.log(AcilStopState)
-            }
-            else if(x['TestDurumu'] == false && x['HazneDurumu'] == 'bos'){
-                toastr["info"]("Hazne boşaldı");
-                clearInterval(Timer_VT_acilStop);
-                vt_btn_AcilStop.disabled = false;
-                vt_btn_Start.disabled = false;
-                vt_testBasinci.disabled = false;
-            }
-        },
-        error: function(x){
-            clearInterval(Timer_VT_acilStop);
-            console.log(x);
-        }
-    });
-  }
+  // function Timer_VT_acilStopEventHandler(){
+  //   $.ajax({
+  //       type: "post",
+  //       url: 'http://localhost:5000/vt_testStatus',
+  //       timeout: 2000,
+  //       success: function(x){
+  //           if((x['HazneDurumu'] == 'bosaliyor') && (AcilStopState == true)){
+  //               AcilStopState = false;
+  //               toastr["info"]("Boşaltma işlemi başladı.");
+  //               console.log(AcilStopState)
+  //           }
+  //           else if(x['TestDurumu'] == false && x['HazneDurumu'] == 'bos'){
+  //               toastr["info"]("Hazne boşaldı");
+  //               clearInterval(Timer_VT_acilStop);
+  //               vt_btn_AcilStop.disabled = false;
+  //               vt_btn_Start.disabled = false;
+  //               vt_testBasinci.disabled = false;
+  //           }
+  //       },
+  //       error: function(x){
+  //           clearInterval(Timer_VT_acilStop);
+  //           console.log(x);
+  //       }
+  //   });
+  // }
   
 </script>
 
-
+<!-- 
 <script type="text/javascript">
 
 //******************** ValfTest Kaydet ********************
-  document.getElementById('valfTestSubmit').addEventListener('click',(e)=>{
-      Swal.showLoading();
-      e.preventDefault();
+  document.getElementById('valfTestKaydet').addEventListener('click',(e)=>{
+       
 
-      
-      let inputs = document.querySelectorAll('#addableField .form-row input[type="text"],#addableField .form-row select');
-     
-      c=0
-      lines_count= (inputs.length-4)/4
 
-      var veri = new Array(lines_count);
-      for (var i = 0; i < lines_count; i++) {
-          veri[i] = new Array(5);
-      }
 
-      for(i=0;i<lines_count;i++){
-
-        for (var j = 0; j < 4; j++){
-          veri[i][j] = inputs[c].value;
-          veri[i][j] = 119; //neval
-         c++
-        }
-        uygunluk_value= document.querySelector(`input[name="uygunluk${i+1}"]:checked`).value;
-        veri[i][4] = uygunluk_value;
-      }
-
-    veri = JSON.stringify(veri);
+    let valf_seri_no = document.getElementById("valf_seri_no").value;
+    let uygun = document.getElementById("uygun").checked;
+    console.log("uygun",uygun)
+ 
+    
+   
+   
     let data = {
       tur : 'valftest',
-      veri : veri
+      valf_seri_no : valf_seri_no,
+      uygun : uygun 
     }
     $.ajax({
           type: "POST",
@@ -706,5 +855,124 @@ $('input[type=radio][name^="uygunluk"').prop("checked",true);
         }
       );
   })
-</script>
+  
+</script> -->
+<script>
+  $(document).ready(function(){
+    $("#testuygundegil1").change(function(){
+      this.parentElement.parentElement.children[1].lastElementChild.checked = false;
+      this.parentElement.parentElement.children[1].lastElementChild.value = "False";
+      // this.value = "False";
+      
+    });
+    $("#testuygun1").change(function(){
+        this.parentElement.parentElement.children[2].lastElementChild.checked = false;
+      // this.parentElement.parentElement.children[2].lastElementChild.value = null;
+        this.value = "True";
+    });
+
+    $("#testuygundegil2").change(function(){
+      this.parentElement.parentElement.children[1].lastElementChild.checked = false;
+      this.parentElement.parentElement.children[1].lastElementChild.value = "False";
+      
+    });
+    $("#testuygun2").change(function(){
+      this.parentElement.parentElement.children[2].lastElementChild.checked = false;
+      // this.parentElement.parentElement.children[2].lastElementChild.value = null;
+      this.value = "True";
+    });  
+    
+    $("#testuygundegil3").change(function(){
+      this.parentElement.parentElement.children[1].lastElementChild.checked = false;
+      this.parentElement.parentElement.children[1].lastElementChild.value = "False";
+     
+    });
+    $("#testuygun3").change(function(){
+      this.parentElement.parentElement.children[2].lastElementChild.checked = false;
+      // this.parentElement.parentElement.children[2].lastElementChild.value = null;
+      this.value = "True";
+    });  
+    
+    $("#testuygundegil4").change(function(){
+      this.parentElement.parentElement.children[1].lastElementChild.checked = false;
+      this.parentElement.parentElement.children[1].lastElementChild.value = "False";
+      // this.value = "False";
+    });
+    $("#testuygun4").change(function(){
+      this.parentElement.parentElement.children[2].lastElementChild.checked = false;
+      //this.parentElement.parentElement.children[2].lastElementChild.value = null;
+      this.value = "True";
+    });
+  
+     $("#testuygundegil5").change(function(){
+      this.parentElement.parentElement.children[1].lastElementChild.checked = false;
+      this.parentElement.parentElement.children[1].lastElementChild.value = "False";
+      //this.value = "False";
+    });
+    $("#testuygun5").change(function(){
+      this.parentElement.parentElement.children[2].lastElementChild.checked = false;
+      //this.parentElement.parentElement.children[2].lastElementChild.value = null;
+      this.value = "True";
+    }); 
+    
+  });
+  
+  
+  </script>
+  <script>
+    
+    $( "form" ).submit(function( event ) {
+      data_list = []
+    var form = document.getElementById('TestForm').elements;
+    
+    for(var i = 0 ; i < form.length ; i++){ 
+        var item = form.item(i);
+    
+        if(item.name){
+        if(item.onkeyup){
+        
+        var obj = {}
+        obj[item.name] = item.value;
+        data_list.push(obj)
+        }
+        else{
+          obj[item.name] = item.value;
+        }
+      }
+        
+    }
+    console.log(data_list)
+    console.log(typeof(data_list))
+    
+              
+    $.ajax({
+          type: "POST",
+          url: '/valf_test_kayıt',
+          data : {"test_valf_save": data_list}, 
+          success: function (x){
+            Swal.fire({
+              title: 'Başarılı!',
+              text: 'Valf test başarılı bir şekilde eklendi!',
+              icon: 'success',
+              confirmButtonText: 'Tamam'
+            })
+          },
+          error(err){
+            console.log;(err);
+          }
+        }
+      );
+
+    
+  });
+  
+  // $( "input[type='radio']" ).on( "click",function(e){
+  //   console.log(e.target.value)
+  // });
+
+  </script>
+  
+
+
+ 
 {% endblock %}
